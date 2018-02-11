@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "^1.6.9",
+    "jsonfile": "^4.0.0",
     "seedrandom": "^2.4.3"
   }
 }

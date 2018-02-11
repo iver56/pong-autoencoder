@@ -3,3 +3,4 @@ node_modules
 *.h5
 *.pyc
 data/*.png
+data/*.json

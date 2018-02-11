@@ -3,6 +3,7 @@ const Canvas = require('canvas');
 const fs = require('fs');
 const path = require('path');
 const seedrandom = require('seedrandom');
+const jsonfile = require('jsonfile');
 
 function drawPong(ctx, canvas, leftPaddleY, rightPaddleY, ballX, ballY) {
   const paddleThickness = 0.03 * canvas.width;
@@ -45,13 +46,17 @@ const prng = seedrandom('deadbeef');
 
 const numImages = 10000;
 for (let i = 0; i < numImages; i++) {
-  let leftPaddleY = prng();
-  let rightPaddleY = prng();
-  let ballX = prng();
-  let ballY = prng();
+  const leftPaddleY = prng();
+  const rightPaddleY = prng();
+  const ballX = prng();
+  const ballY = prng();
 
-  let fileName = `pong_${i}.png`;
-  let filePath = path.join(__dirname, 'data', fileName);
+  const fileName = `pong_${i}.png`;
+  const filePath = path.join(__dirname, 'data', fileName);
+
+  const metaData = {leftPaddleY, rightPaddleY, ballX, ballY};
+  let metaDataFilePath = path.join(__dirname, 'data', fileName + '.json');
+  jsonfile.writeFileSync(metaDataFilePath, metaData);
 
   let canvas = new Canvas(32, 32);
   let ctx = canvas.getContext("2d");
