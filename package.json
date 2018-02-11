@@ -1,0 +1,12 @@
+{
+  "name": "pong-autoencoder",
+  "version": "0.0.1",
+  "main": "generateImages.js",
+  "repository": "git@github.com:iver56/pong-autoencoder.git",
+  "author": "Iver Jordal",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^1.6.9",
+    "seedrandom": "^2.4.3"
+  }
+}
