@@ -45,6 +45,7 @@ function drawPong(ctx, canvas, leftPaddleY, rightPaddleY, ballX, ballY) {
 const prng = seedrandom('deadbeef');
 
 const numImages = 10000;
+const splitIndex = 8000;
 for (let i = 0; i < numImages; i++) {
   const leftPaddleY = prng();
   const rightPaddleY = prng();
@@ -52,10 +53,11 @@ for (let i = 0; i < numImages; i++) {
   const ballY = prng();
 
   const fileName = `pong_${i}.png`;
-  const filePath = path.join(__dirname, 'data', fileName);
+  const subfolder = i < splitIndex ? 'training' : 'validation';
+  const filePath = path.join(__dirname, 'data', subfolder, fileName);
 
   const metaData = {leftPaddleY, rightPaddleY, ballX, ballY};
-  let metaDataFilePath = path.join(__dirname, 'data', fileName + '.json');
+  let metaDataFilePath = path.join(__dirname, 'data', subfolder, fileName + '.json');
   jsonfile.writeFileSync(metaDataFilePath, metaData);
 
   let canvas = new Canvas(32, 32);
