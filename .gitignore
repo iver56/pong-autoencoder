@@ -2,3 +2,4 @@
 node_modules
 *.h5
 *.pyc
+data/validation/*.predicted.png

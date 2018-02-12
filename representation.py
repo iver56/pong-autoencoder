@@ -14,17 +14,14 @@ def vectorize_y(meta_data_obj):
     return vector
 
 
-def rescale_image(image):
-    return image / 255.0
-
-
 def get_images(path):
     x = []
-    y = []
+    file_paths = []
     for root, dirs, filenames in os.walk(path):
         for filename in filenames:
             if filename.endswith('.png'):
                 file_path = os.path.join(path, filename)
+                file_paths.append(file_path)
                 image = imread(file_path, as_grey=True)
                 x.append(image)
                 """
@@ -43,6 +40,4 @@ def get_images(path):
             x.shape[-2] * x.shape[-1],  # width * height
         )
     )
-    print(x)
-    y = np.array(x)
-    return x, y
+    return x, file_paths

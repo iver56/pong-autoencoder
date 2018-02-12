@@ -15,25 +15,22 @@ data/
 
 import os
 
+import numpy as np
 from keras.layers import Activation, Dense
 from keras.models import Sequential
 
 from representation import get_images
 
 train_dir = os.path.join('data', 'training')
-x_train, y_train = get_images(train_dir)
+x_train, _ = get_images(train_dir)
+y_train = np.array(x_train)
 
-validation_dir = os.path.join('data', 'validation')
-x_validation, y_validation = get_images(validation_dir)
-
-num_train_samples = len(x_train)
-num_validation_samples = len(x_validation)
+num_training_samples = len(x_train)
 
 img_width = img_height = 32
 num_pixels = img_width * img_height
 
-print('num_train_samples', num_train_samples)
-print('num_validation_samples', num_validation_samples)
+print('num_train_samples', num_training_samples)
 
 model = Sequential()
 model.add(Dense(64, input_shape=(num_pixels,)))
