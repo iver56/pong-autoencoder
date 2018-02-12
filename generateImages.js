@@ -9,7 +9,7 @@ function drawPong(ctx, canvas, leftPaddleY, rightPaddleY, ballX, ballY) {
   const paddleThickness = 0.03 * canvas.width;
   const padding = paddleThickness;
   const paddleLength = 0.15 * canvas.height;
-  const ballRadius = paddleThickness / 2;
+  const ballRadius = 0.03 * canvas.width;
 
   // background
   ctx.fillStyle = 'black';
