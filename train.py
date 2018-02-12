@@ -34,11 +34,11 @@ print('num_train_samples', num_training_samples)
 
 model = Sequential()
 model.add(Dense(64, input_shape=(num_pixels,)))
-model.add(Activation('sigmoid'))
-model.add(Dense(4))
-model.add(Activation('sigmoid'))
+model.add(Activation('selu'))
+model.add(Dense(12))
+model.add(Activation('selu'))
 model.add(Dense(64))
-model.add(Activation('sigmoid'))
+model.add(Activation('selu'))
 model.add(Dense(num_pixels))
 model.add(Activation('sigmoid'))
 
@@ -53,7 +53,7 @@ model.fit(
     x_train,
     y_train,
     batch_size=64,
-    nb_epoch=300
+    epochs=1000
 )
 
 model.save('pong-autoencoder.h5')

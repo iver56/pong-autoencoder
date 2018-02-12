@@ -1,8 +1,7 @@
-import json
-
-from skimage.io import imread
-import numpy as np
 import os
+
+import numpy as np
+from skimage.io import imread
 
 
 def vectorize_y(meta_data_obj):
@@ -19,18 +18,11 @@ def get_images(path):
     file_paths = []
     for root, dirs, filenames in os.walk(path):
         for filename in filenames:
-            if filename.endswith('.png'):
+            if filename.endswith('.png') and not filename.endswith('.predicted.png'):
                 file_path = os.path.join(path, filename)
                 file_paths.append(file_path)
                 image = imread(file_path, as_grey=True)
                 x.append(image)
-                """
-                with open(filename + '.json') as meta_data_file:
-                    meta_data_obj = json.load(meta_data_file)
-                print(meta_data_obj)
-                vector_y = vectorize_y(meta_data_obj)
-                y.append(vector_y)
-                """
 
         break  # no recursive walk
     x = np.array(x)
