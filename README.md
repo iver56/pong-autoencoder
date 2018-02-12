@@ -18,3 +18,4 @@
 
 * Generate dataset: `node generateImages.js`
 * Train: `python train.py`
+* Run trained model on validation set: `python predict.py`
