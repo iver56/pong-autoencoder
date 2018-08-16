@@ -29,7 +29,9 @@ def get_images(path):
     x = x.reshape(
         (
             x.shape[0],  # number of samples
-            x.shape[-2] * x.shape[-1],  # width * height
+            x.shape[-1],
+            x.shape[-2],
+            1
         )
     )
     return x, file_paths
