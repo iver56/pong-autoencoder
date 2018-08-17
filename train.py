@@ -28,12 +28,11 @@ from keras.models import Sequential
 
 from representation import get_images
 
-img_width = img_height = 32
-num_pixels = img_width * img_height
-
 train_dir = os.path.join("data", "training")
 x_train, _ = get_images(train_dir)
-y_train = np.array(x_train).reshape((len(x_train), img_width, img_height, 1))
+
+y_train = np.array(x_train)
+y_train = y_train.reshape((y_train.shape[0], y_train.shape[1], y_train.shape[2], 1))
 
 num_training_samples = len(x_train)
 
@@ -68,12 +67,6 @@ model.add(MaxPooling2D(pool_size=2))
 model.add(Conv2D(filters=5, kernel_size=3, strides=1, padding="same"))
 model.add(BatchNormalization())
 model.add(Activation("relu"))
-model.add(MaxPooling2D(pool_size=2))
-model.add(
-    Deconvolution2D(
-        1, kernel_size=(4, 4), strides=(2, 2), padding="same"
-    )
-)
 model.add(
     Deconvolution2D(
         1, kernel_size=(4, 4), strides=(2, 2), padding="same"

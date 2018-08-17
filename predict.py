@@ -11,8 +11,7 @@ x_validation, file_paths = get_images(validation_dir)
 
 num_validation_samples = len(x_validation)
 
-img_width = img_height = 32
-num_pixels = img_width * img_height
+img_width = img_height = x_validation[0].shape[0]
 
 print('num_validation_samples', num_validation_samples)
 

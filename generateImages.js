@@ -60,7 +60,7 @@ for (let i = 0; i < numImages; i++) {
   let metaDataFilePath = path.join(__dirname, 'data', subfolder, fileName + '.json');
   jsonfile.writeFileSync(metaDataFilePath, metaData);
 
-  let canvas = new Canvas(32, 32);
+  let canvas = new Canvas(256, 256);
   let ctx = canvas.getContext("2d");
   drawPong(ctx, canvas, leftPaddleY, rightPaddleY, ballX, ballY);
 
